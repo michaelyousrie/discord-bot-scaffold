@@ -19,7 +19,7 @@ class Application
 
     private static function bootstrap()
     {
-        $dotenv = Dotenv::createImmutable(__DIR__ . "../../../");
+        $dotenv = Dotenv::createImmutable(__DIR__ . "../../../../../");
         $dotenv->load();
 
         self::$discord = new Discord([
