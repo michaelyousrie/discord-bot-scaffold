@@ -10,16 +10,16 @@ class Application
 {
     protected static $discord;
 
-    public static function run()
+    public static function run(string $baseDir)
     {
-        self::bootstrap();
+        self::bootstrap($baseDir);
 
         self::$discord->run();
     }
 
-    private static function bootstrap()
+    private static function bootstrap(string $baseDir)
     {
-        $dotenv = Dotenv::createImmutable(__DIR__ . "../../../../../../");
+        $dotenv = Dotenv::createImmutable($baseDir);
         $dotenv->load();
 
         self::$discord = new Discord([
