@@ -1,5 +1,5 @@
 <?php
-namespace App\Entities;
+namespace DiscordBot\Entities;
 
 class DefaultAnswerHandler
 {
