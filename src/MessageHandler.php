@@ -1,6 +1,7 @@
 <?php
 namespace DiscordBot;
 
+use App\Entities\DefaultAnswerHandler;
 use DiscordBot\Entities\CommandMapper;
 use DiscordBot\Entities\ParsedMessage;
 
@@ -12,11 +13,13 @@ class MessageHandler
         if ($message->isCommand) {
             $class = CommandMapper::getClass($message->command);
 
-            if (!is_null($class)) {
-                return call_user_func_array("{$class}::execute", [$message]);
+            if (is_null($class)) {
+                $message->channel->sendMessage(
+                    DefaultAnswerHandler::getUnknownCommandMessage()
+                );
             }
 
-            return null;
+            return call_user_func_array("{$class}::execute", [$message]);
         }
     }
 }
