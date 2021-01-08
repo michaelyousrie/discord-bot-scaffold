@@ -1,7 +1,7 @@
 <?php
 namespace DiscordBot;
 
-use App\Entities\DefaultAnswerHandler;
+use DiscordBot\Entities\DefaultAnswerHandler;
 use DiscordBot\Entities\CommandMapper;
 use DiscordBot\Entities\ParsedMessage;
 
