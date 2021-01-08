@@ -14,7 +14,7 @@ class MessageHandler
             $class = CommandMapper::getClass($message->command);
 
             if (is_null($class)) {
-                $message->channel->sendMessage(
+                return $message->channel->sendMessage(
                     DefaultAnswerHandler::getUnknownCommandMessage()
                 );
             }
