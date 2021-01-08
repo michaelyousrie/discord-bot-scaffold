@@ -1,0 +1,14 @@
+{
+    "name": "f0rty7even/discord-bot",
+    "description": "A simple scaffold to make discord bots in a breeze",
+    "require": {
+        "team-reflex/discord-php": "^5.1",
+        "vlucas/phpdotenv": "^5.2"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "DiscordBot\\": "src/"
+        }
+    }
+}
