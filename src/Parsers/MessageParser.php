@@ -22,7 +22,7 @@ class MessageParser
             $exploded = explode($_ENV['DISCORD_BOT_PREFIX'], $message->content);
 
             $parsedMessage->commandPrefix = $exploded[0];
-            $parsedMessage->command = $exploded[1];
+            $parsedMessage->fullCommand = $exploded[1];
 
             $explodedCommand = explode(" ", $exploded[1]);
             $commandArgs = [];
@@ -30,6 +30,8 @@ class MessageParser
             foreach($explodedCommand as $arg) {
                 $commandArgs[] = $arg;
             }
+
+            $parsedMessage->command = $commandArgs[0];
 
             $parsedMessage->commandArgs = $commandArgs;
         }
