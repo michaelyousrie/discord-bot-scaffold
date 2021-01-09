@@ -19,6 +19,8 @@ class Application
 
     private static function bootstrap(string $baseDir)
     {
+        Container::set('baseDir', $baseDir);
+
         $dotenv = Dotenv::createImmutable($baseDir);
         $dotenv->load();
 
@@ -26,12 +28,16 @@ class Application
             'token' => $_ENV['DISCORD_TOKEN'],
         ]);
 
+        Container::set('discord', self::$discord);
+
         self::$discord->on('ready', function ($discord) {
             echo "Bot is Online!", PHP_EOL;
         
             $discord->on('message', function ($message, $discord) {
+                Container::set('original_message', $message);
                 $message = MessageParser::parse($message);
-        
+                Container::set('parsed_message', $message);
+
                 MessageHandler::handle($message, $discord);
             });
         });
