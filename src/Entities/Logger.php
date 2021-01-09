@@ -9,7 +9,7 @@ class Logger
     {
         $carbon = Carbon::now();
         $date = $carbon->format('Y-m-d');
-        $time = $carbon->format('H:i:s A');
+        $time = $carbon->format('h:i:s');
 
         $dir = Container::get('baseDir') . "/Logs/{$date}.log";
 
@@ -23,7 +23,7 @@ class Logger
             $data = json_decode($data, true);
         }
 
-        $data = "[{$date} - {$time}] \n\n {$data}";
+        $data = "[{$date} - {$time}] \n\n {$data}\n\n";
 
         fwrite($f, $data);
         fclose($f);
