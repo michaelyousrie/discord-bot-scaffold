@@ -23,7 +23,7 @@ class Logger
             $data = json_decode($data, true);
         }
 
-        $data = "[{$date} - {$time}] \n\n {$data}\n\n";
+        $data = "[{$date} - {$time}] \n {$data}\n\n";
 
         fwrite($f, $data);
         fclose($f);
