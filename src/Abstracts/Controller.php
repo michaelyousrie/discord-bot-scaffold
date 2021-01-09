@@ -8,7 +8,7 @@ abstract class Controller
 {
     public static function execute(ParsedMessage $msg) {}
 
-    public function emoji(string $key)
+    public static function emoji(string $key)
     {
         return EmojiMapper::get($key);
     }
